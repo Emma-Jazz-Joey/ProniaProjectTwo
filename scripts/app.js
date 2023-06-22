@@ -74,12 +74,40 @@ const displayPlants = (arrayOfPlants, node) => {
   });
 }
 
+//******* begin math ********
+
+let totalPrice = 0;
+
 function addToDiv(plant) {
-  console.log({plant})
+  console.log({plant});
+
   const inCartElement = document.getElementById('inCart')
-  const title = document.createElement('div')
-  title.textContent = plant.name
-  inCartElement.append(title)
+  const container = document.createElement('div');
+
+  const title = document.createElement('div');
+  const price = document.createElement('p');
+  const img = document.createElement('img');
+  title.textContent = plant.name;
+  price.textContent = plant.price;
+  img.src = plant.src;
+  container.append(title);
+  container.append(price);
+  container.append(img);
+  
+
+  //swapped this stuff around to make em a container
+
+  inCartElement.append(container);
+
+  //math function to add prices teehee xdddd
+  const numericPrice = parseFloat(plant.price);
+  totalPrice += numericPrice;
+
+  //updating the total price displayed
+  const totalPriceElement = document.getElementById('totalPrice');
+  totalPriceElement.textContent = totalPrice;
+
+  //******* end math *********
 
 
   //jazz's idea
